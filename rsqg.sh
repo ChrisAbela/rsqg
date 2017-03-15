@@ -33,11 +33,11 @@ function read_deps() {
   if [ -n "$REQUIRES" ]; then
     echo "  Application $APP has these dependencies:"
     echo "    $REQUIRES"
-  else echo "  Application $APP has no dependencies"
+  else echo "  Application $APP has no dependencies."
   fi
   for DEP in $REQUIRES; do
     DEP="@$DEP"
-    LIVE=1 ; # We are not finished yet
+    LIVE=1 ; # We are not finished yet.
     echo $DEP >> ${APP}.sqf
   done
   echo $APP >> ${APP}.sqf
