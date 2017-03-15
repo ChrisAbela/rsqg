@@ -1,0 +1,67 @@
+rsqg - The recursive sbopkg queue file generator
+
+A script to generate the sbokpg queue file for an arbitrary number of
+arguments. The queue files are placed in $HOME/.rsqg and the user may opt to
+move them to sbopkg directory manually.
+
+Queue files that are found under the $HOME/.rsqg files will not be overwittern
+and they will be assumed.
+
+Recursive queue files are important to users who want to upgrade their packages
+to determine the other applications that may be affected. Also recursive queue
+files are important when removing packages. Recursive queue files are generated
+by means of the @ prefix to the applications.
+
+For example:
+
+  $ rsqg.sh letsencrypt
+
+would generate these files:
+
+  $ ls $HOME/.rsqg/ | cat
+  augeas.sqf
+  cffi.sqf
+  configobj.sqf
+  cryptography.sqf
+  enum34.sqf
+  idna.sqf
+  ipaddress.sqf
+  letsencrypt.sqf
+  mock.sqf
+  ndg_httpsclient.sqf
+  psutil.sqf
+  pyOpenSSL.sqf
+  pyasn1.sqf
+  pycparser.sqf
+  pyparsing.sqf
+  pyrfc3339.sqf
+  python-augeas.sqf
+  python-configargparse.sqf
+  python-future.sqf
+  python-parsedatetime.sqf
+  python-requests.sqf
+  python2-pythondialog.sqf
+  pytz.sqf
+  six.sqf
+  werkzeug.sqf
+  zope.component.sqf
+  zope.event.sqf
+  zope.interface.sqf
+
+  $ cat $HOME/.rsqg/letsencrypt.sqf
+  #letsencrypt
+  @configobj
+  @mock
+  @python-requests
+  @pytz
+  @python2-pythondialog
+  @zope.component
+  @pyrfc3339
+  @psutil
+  @python-parsedatetime
+  @python-configargparse
+  @werkzeug
+  @ndg_httpsclient
+  @python-augeas
+  @pyparsing
+  letsencrypt
