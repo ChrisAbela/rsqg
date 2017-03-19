@@ -29,7 +29,7 @@ ITERATION=1
 function read_deps() {
   echo "#${APP}" > ${APP}.sqf
   source $REPO_ROOT/$REPO_NAME/$REPO_BRANCH/*/$APP/${APP}.info
-  REQUIRES=$( echo $REQUIRES | grep -wv '%README%' )
+  REQUIRES=$( echo $REQUIRES | sed 's/%README%//' )
   if [ -n "$REQUIRES" ]; then
     echo "  Application $APP has these dependencies:"
     echo "    $REQUIRES"
